@@ -29,4 +29,4 @@ jobs:
       - name: Log variables
         run: |
           echo $GITHUB_REF
-          echo $steps.extract_branch.outputs.branch
+          echo ${{ steps.extract_branch.outputs.branch }}
