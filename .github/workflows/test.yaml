@@ -1,9 +1,10 @@
 name: ci
 
-# on:
-#  push:
-#    tags:
-#      - 'v*'
+on:
+  create:
+  push:
+    tags:
+      - 'v*'
 
 jobs:
   build:
