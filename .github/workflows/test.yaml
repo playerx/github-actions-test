@@ -1,10 +1,9 @@
 name: ci
 
 on:
-  create:
   push:
-#    tags:
-#      - 'v*'
+    tags:
+      - "v*"
 
 jobs:
   build:
@@ -20,12 +19,12 @@ jobs:
 
       - name: Clone repository
         uses: actions/checkout@v2
-        
+
       - name: Extract branch name
         shell: bash
         run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
         id: extract_branch
-        
+
       - name: Extract tag name
         id: tag
         uses: actions/github-script@0.2.0
@@ -33,7 +32,7 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             return context.payload.ref.replace(/\/refs\/tags\//, '');
-            
+
       - name: Log variables
         run: |
           echo $GITHUB_REF
