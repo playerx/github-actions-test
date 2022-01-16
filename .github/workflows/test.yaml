@@ -25,10 +25,17 @@ jobs:
         shell: bash
         run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
         id: extract_branch
-
+        
+      - name: Extract tag name
+        id: tag
+        uses: actions/github-script@0.2.0
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            return context.payload.ref.replace(/\/refs\/tags\//, '');
+            
       - name: Log variables
         run: |
           echo $GITHUB_REF
           echo ${{ steps.extract_branch.outputs.branch }}
-          echo ${{ context.payload }}
-          echo ${{ context.payload.ref }}
+          echo ${{ steps.tag.outputs.result }}
