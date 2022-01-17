@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "build": "browserify test.browser.js > bundle.js"
+  },
+  "dependencies": {
+    "browserify": "^17.0.0"
+  }
+}
