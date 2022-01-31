@@ -103,8 +103,7 @@ jobs:
       - uses: mshick/add-pr-comment@v1
         with:
           message: |
-            📦 Deployed at:
-            https://${{ steps.convert_cidv0.outputs.cidv1 }}.ipfs.dweb.link/
+            Deployment unpinned successfully!
 
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           repo-token-user-login: "github-actions[bot]"
